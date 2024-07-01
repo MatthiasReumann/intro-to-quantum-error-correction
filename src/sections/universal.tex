@@ -1,0 +1,48 @@
+\section{Universal Quantum Computing}\label{sec:uqc}
+
+Similarly to classical computers, where any gate can be constructed by the universal logic gates $NAND$ and $NOR$, we require a \textit{universal gate set} for quantum computers. Any unitary can be approximated in arbitrary precision by circuits constructed from this gate set~\cite{nielsen00}.
+
+\subsection{Clifford Gates}
+
+The Clifford gates are the unitary matrices $H$, $S$, and $CNOT$.
+\begin{equation}
+    H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1 \\
+    \end{pmatrix}
+\end{equation}
+\begin{equation}
+    S = \begin{pmatrix}
+        1 & 0 \\
+        0 & i \\
+    \end{pmatrix}
+\end{equation}
+\begin{equation}
+    CNOT = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+    \end{pmatrix}
+\end{equation}
+These unitaries generate the Clifford group. A group of unitary matrices that map the group of Pauli matrices to itself under conjugation.
+\begin{equation}
+    \mathcal{C}_n = \{U : U\mathcal{P}_nU^{\dagger} = \mathcal{P}_n\}
+\end{equation}
+This is a special group in many ways. Firstly, the unitaries that generate it, are fundamental building blocks for many quantum algorithms, including the entanglement of two qubits. Moreover, by the definition of stabilizers as elements of the Pauli group, the Clifford group maps stabilizers to other valid stabilizers with potentially different codewords. This fact paves the way to a theorem which we briefly cover in the next section. 
+
+\subsection{Gottesman-Knill-Theorem}
+
+According to the Gottesman\hyph{}Knill\hyph{}Theorem, a probabilistic classical computer can efficiently simulate any circuit of Clifford gates initialized with a stabilizer state and measured in the Pauli basis~\cite{gottesman_heisenberg_1998}. Bravyi and Kitaev provide a visual addition to the theorem in~\cite{bravyi_universal_2005}. They speculate that the transition from classical computing to quantum computing occurs on the boundary of the octahedron in Figure~\ref{fig:octahedron}. As briefly mentioned before, many circuits can be constructed by the Clifford gates alone. For example, this includes the circuit for the teleportation algorithm. A full discussion of the theorem's implications does not fit here, hence, we refer the interested reader to Ref.~\cite{cuffaro_significance_2017}. Nevertheless, this beautifully shows that ``quantum supremacy'' is nuanced.
+\input{schematics/octahedron.tex}
+
+\subsection{The T Gate}
+
+The Clifford gates alone do not form a universal gate set. Therefore, we need an additional non-Clifford gate to achieve this. A common choice for this non-Clifford gate is the $T$ gate. Intuitively, the $T$ gate (or any other non-Clifford) unlocks the rest of the Bloch sphere in Figure~\ref{fig:octahedron}. 
+\begin{equation}
+    T = \begin{pmatrix}
+        1 & 0 \\
+        0 & e^{i\pi{}/4} \\
+    \end{pmatrix}
+\end{equation}
+The $T$ gate is particularly interesting because we can construct Toffoli (CCNOT) gates with it. Its textbook implementation requires seven $T$ gates~\cite{nielsen00}. However, recent work reduced that number to four~\cite{jones_novel_2013}. In turn, the importance of the Toffoli gate stems from its usage in quantum algorithms such as Shor's factoring algorithm.

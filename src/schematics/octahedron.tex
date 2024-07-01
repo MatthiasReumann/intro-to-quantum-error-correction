@@ -1,0 +1,57 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[line join=bevel,z=-5.5,scale=2.3]
+        \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+        \definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+        \definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+        \coordinate (B1) at (0,1,0);
+        \coordinate (C1) at (0,-1,0);
+
+        \coordinate (A1) at (0,0,-1);
+        \coordinate (A3) at (0,0,1);
+
+        \coordinate (A2) at (-1,0,0);
+        \coordinate (A4) at (1,0,0);
+
+        \filldraw[color=black, fill=gray!4](0,0) circle (1);
+
+        
+        \draw[opacity=0.4, dashed, thin] (0,0) ellipse (1 and 0.21);
+        
+        \draw (A1) -- (A2) -- (B1) -- cycle;
+        \draw (A4) -- (A1) -- (B1) -- cycle;
+        \draw (A1) -- (A2) -- (C1) -- cycle;
+        \draw (A4) -- (A1) -- (C1) -- cycle;
+        \draw [fill opacity=0.3,fill=rblue2] (A2) -- (A3) -- (B1) -- cycle;
+        \draw [fill opacity=0.3,fill=rblue2] (A3) -- (A4) -- (B1) -- cycle;
+        \draw [fill opacity=0.3,fill=rblue2] (A2) -- (A3) -- (C1) -- cycle;
+        \draw [fill opacity=0.3,fill=rblue2] (A3) -- (A4) -- (C1) -- cycle;
+
+        
+        \node at (B1) [above=2mm] {\footnotesize $\ket{0}$};
+        \fill [fill=brightlavender] (B1) circle (0.03);
+        \draw [dashed,color=brightlavender] (B1) -- (C1);
+        \node at (C1) [below=2mm] {\footnotesize $\ket{1}$};
+        \fill [fill=brightlavender] (C1) circle (0.03);
+        
+        
+        \node at (A1) [above right=1mm] {\footnotesize $\ket-$};
+        \fill [fill=amaranth] (A1) circle (0.03);
+        \draw [dashed,color=amaranth] (A1) -- (A3);
+        \node at (A3) [below left=1mm] {\footnotesize $\ket+$};
+        \fill [fill=amaranth] (A3) circle (0.03);
+        
+        
+        \node at (A2) [left=2mm] {\footnotesize $\ket{-i}$};
+        \fill [fill=bleudefrance] (A2) circle (0.03);
+        \draw [dashed,color=bleudefrance] (A2) -- (A4);
+        \node at (A4) [right=2mm] {\footnotesize $\ket{+i}$};
+        \fill [fill=bleudefrance] (A4) circle (0.03);
+    
+        
+        \fill [fill=darkgray] (0,0,0) circle (0.02);
+
+        \end{tikzpicture}
+    \caption{The octahedron spanned by $\ket0$ state initialization and application of the Clifford gates. Figure inspired by~\cite{azad_efficient_2024}.}\label{fig:octahedron}
+\end{figure}

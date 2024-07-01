@@ -1,0 +1,39 @@
+\section{Challenges}
+
+Even though quantum error correction often borrows ideas from its classical counterpart, quantum error correction faces the following unique challenges.
+
+\vspace{0.75em}
+\noindent
+\textbf{No-Cloning Theorem} The no-cloning theorem states that no unitary operation $U$ exists that copies an unknown quantum state $\ket{\psi}$. Consequently, quantum analogs of classical repetition codes, where one copies individual bits and takes a majority vote, are infeasible.
+\begin{equation*}
+    \Qcircuit @C=1.5em @R=1em {
+        \lstick{\ket{\psi}}  & \multigate{1}{U}  & \rstick{\ket{\psi}} \qw \\ 
+        \lstick{\ket0}       & \ghost{U}         & \rstick{\ket{\psi}} \qw }
+\end{equation*}
+
+\vspace{0.5em}
+\noindent
+\textbf{Continous Errors} A qubit can be in any superposition of the basis states $\ket{0}$ and $\ket{1}$.
+\begin{equation}
+    \alpha\ket{0} + \beta\ket{1}
+\end{equation}
+where $\alpha{}$ and $\beta{}$ are complex numbers that fulfill the constraint $|\alpha{}|^2 + |\beta{}|^2 = 1$. Thus, a quantum computer has a continuum of states. Ordinary classical computers are binary - a bit is either $0$ or $1$, even after a bit-flip error. In comparison, it seems like quantum error correction requires an infinite amount of precision to detect all possible errors.
+
+Let's look at a concrete and practically relevant example. Imagine that a quantum computer implements the following rotation operation.
+\begin{equation}
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & e^{i\theta}
+    \end{pmatrix}
+\end{equation}
+However, due to some miscalibration, it ends up rotating not by $\theta$ but $\theta{}+\delta{}$. Figure~\ref{fig:continous-errors} depicts this scenario on the \textit{bloch sphere} for a $\frac{\pi}{2}$ rotation. Throughout the computation, we apply this faulty operation many times. How small $\delta$ may be, the accumulation of errors ultimately leads to inaccurate results. A reasonable idea therefore is to detect and correct this error. The difficulty lies in the fact that $\delta$ can be any real number, leaving us with the problem stated in the previous paragraph.
+
+\input{schematics/continous-errors.tex}
+
+\vspace{0.5em}
+\noindent
+\textbf{Measurements destroy quantum information} Measurements in quantum mechanics destroy the superposition of a quantum state. Contrary to the classical approach, we can not recover the original superposition after observing the state.
+
+\smallskip
+\noindent
+Given these three challenges, quantum error correction seems like a daunting, if not impossible, task. Fortunately, as we will illustrate in the succeeding sections, each challenge can be overcome.

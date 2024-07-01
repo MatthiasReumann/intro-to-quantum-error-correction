@@ -1,0 +1,248 @@
+\begin{figure*}
+    \tikzset{
+        logicalc2/.pic = {
+            \filldraw [color=black, fill=rblue2, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc1error/.pic = {
+            \filldraw [color=black, fill=rred, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=rred, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=rred, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc1fix/.pic = {
+            \filldraw [color=black, fill=rgreen, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc2error/.pic = {
+            \filldraw [color=black, fill=rblue2, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=rred, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc2fix/.pic = {
+            \filldraw [color=black, fill=rblue2, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=rgreen, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc2berror/.pic = {
+            \filldraw [color=black, fill=rblue2, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=rred, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        logicalc2bfix/.pic = {
+            \filldraw [color=black, fill=rblue2, thin] (0.375, 0.375) circle (0.75);
+
+            \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.25,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.25,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=rgreen, thin] (0.5,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.5) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.5,0.75) circle (0.07);
+
+            \filldraw [color=black, fill=white, thin] (0.75,0) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.25) circle (0.07);
+            \filldraw [color=black, fill=white, thin] (0.75,0.5) circle (0.07);
+        }
+    }
+    \tikzset{
+        concatcode/.pic = {
+            \node at (-0.5,5.7) {\large \textbf{a}};
+            \filldraw [color=black, fill=rbeige, thin, rounded corners=16pt] (0,0) rectangle (2, 6);
+            \pic at (0.62, 4.65) {logicalc2};
+            \pic at (0.62, 3) {logicalc2};
+            \pic at (0.62, 0.6) {logicalc2};
+            
+            \node at (1,2.3) {\Large $\vdots$};
+
+            \node at (0.3,5.65) {\tiny\underline{$1$}};
+            \node at (0.3,4) {\tiny\underline{$2$}};
+            \node at (0.3,1.6) {\tiny\underline{$7$}};
+
+            
+            \draw[color=black, thin] (1.7, 5.75) -- (2.3, 5.75) node[right, inner sep=0.15em] {$[[7,1,3]]$};
+            \draw[color=black, thin] (1.6, 5) -- (2.3, 5) node[right, inner sep=0.15em] {$[[15,1,3]]$};
+        }
+    }
+    \tikzset{
+        concatcodec2error/.pic = {
+            \node at (-0.5,5.7) {\large \textbf{b}};
+            \filldraw [color=black, fill=rbeige, thin, rounded corners=16pt] (0,0) rectangle (2, 6);
+            \pic at (0.62, 4.65) {logicalc2};
+            \pic at (0.62, 3) {logicalc2error};
+            \pic at (0.62, 0.6) {logicalc2berror};
+            
+            \node at (1,2.3) {\Large $\vdots$};
+
+            \node at (0.3,5.65) {\tiny\underline{$1$}};
+            \node at (0.3,4) {\tiny\underline{$2$}};
+            \node at (1.66,1.6) {\tiny\underline{$7$}};
+
+            \pic at (2.62, 3) {logicalc2fix};
+            \draw[dashed] (1, 2.62) -- (3, 2.62);
+            \draw[dashed] (1, 4.12) -- (3, 4.12);
+
+            \pic at (-1.62, 0.6) {logicalc2bfix};
+            \draw[dashed] (-1.25, 0.22) -- (1, 0.22);
+            \draw[dashed] (-1.25, 1.72) -- (1, 1.72);
+
+            \node[text width=4em] at (3.4, 4.75) {\baselineskip=0.5pt\sffamily\tiny Reed-Muller parity-check and correction\par};
+            \draw[thin, latex-] (2.25, 4.25) |- (2.5, 4.75);
+        }
+    }
+    \tikzset{
+        concatcodec1error/.pic = {
+            \node at (-0.5,5.7) {\large \textbf{c}};
+            \filldraw [color=black, fill=rbeige, thin, rounded corners=16pt] (0,0) rectangle (2, 6);
+            \pic at (0.62, 4.65) {logicalc1error};
+            \pic at (0.62, 3) {logicalc2};
+            \pic at (0.62, 0.6) {logicalc2};
+            
+            \node at (1,2.3) {\Large $\vdots$};
+
+            \node at (0.3,5.65) {\tiny\underline{$1$}};
+            \node at (0.3,4) {\tiny\underline{$2$}};
+            \node at (0.3,1.6) {\tiny\underline{$7$}};
+
+            \filldraw [color=black, fill=rbeige, thin, rounded corners=16pt] (3,0) rectangle (5, 6);
+            \pic at (3.62, 4.65) {logicalc1fix};
+            \pic at (3.62, 3) {logicalc2};
+            \pic at (3.62, 0.6) {logicalc2};
+
+            \draw[dashed] (1, 0) -- (4, 0);
+            \draw[dashed] (1, 6) -- (4, 6);
+
+            \node[text width=4em] at (-0.8, 1.5) {\baselineskip=0.5pt\sffamily\tiny Steane parity-check and correction\par};
+            \draw[thin, -latex] (-1, 1) |- (-0.25, 0.75);
+        }
+    }
+    \centering
+    \begin{tikzpicture}[font={\footnotesize}]
+        \pic at (0,0) {concatcode};
+        \pic at (5,0) {concatcodec2error};
+        \pic at (10,0) {concatcodec1error};
+    \end{tikzpicture}
+    \caption{\textbf{a)} Concatenation of the $[[7,1,3]]$ Steane code and $[[15,1,3]]$ Reed-Muller code. Each underlying qubit of the Steane code is a Reed-Muller logical qubit using 15 physical qubits. \textbf{b)} Possible erroneous state after the application of the $T_L$ for the concatenated code. Due to transversality, single-qubit errors propagate to different logical Reed-Muller qubits. Error correction on these logical Reed-Muller qubits corrects the overall state. \textbf{c)} Possible erroneous state after the application of a logical Clifford gate for the concatenated code. Due to the non-transversality of the underlying Reed-Muller logical gate, single-qubit errors propagate to multiple ones resulting in a logical Reed-Muller fault. Error correction on the Steane code can detect and correct one of such errors. Figure inspired by~\cite{campbell_roads_2017}.}\label{fig:code-switching}
+\end{figure*}

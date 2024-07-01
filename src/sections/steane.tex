@@ -1,0 +1,30 @@
+\input{schematics/logical-steane.tex}
+
+\section{The Steane Code}\label{sec:steane-code}
+
+In Section~\ref{sec:stabilizers} we alluded to the close relationship between classical parity checks and stabilizers. Naturally, this hints at the possibility of constructing quantum codes from classical ones. In this section, we introduce such a code, namely the $[[7,1,3]]$ Steane code.
+
+The Steane code belongs to the larger family of CSS codes named after their inventors Calderbank, Shor, and Steane. For the present discussion, a formal introduction to CSS codes is unnecessary and hence we refer the reader to Ref.~\cite{nielsen00}, Ref.~\cite{gottesman_introduction_2009}, or one of the original papers~\cite{calderbank_good_1996}. 
+
+\noindent
+The code construction stacks two parity check matrices $H$ of the $[7,4,3]$ classical hamming code on top of each other. Instead of $1$'s $X$ and $Z$ matrices are used for phase and bit-flip errors, respectively. Table~\ref{table:steane-stabilizers} lists the resulting stabilizers. Considering Section~\ref{sec:stabilizers}, it should feel somewhat intuitive that such a construction works.
+
+Advantageous for fault tolerance is that the implementation of all logical Clifford gates is \textit{transversal}. That is, the $i$th physical qubit of a logical qubit only interacts with the $i$th physical qubit of another logical qubit. This is best seen in the circuits in Figure~\ref{fig:steane-logical-gates}a. This is an important property because we do not want a single error to propagate into multiple ones. Especially, if the error correction code is only able to detect and correct one-qubit errors. 
+
+\begin{table}[h]
+    \centering
+    \resizebox{0.7\columnwidth}{!}{
+    \begin{tabular}{ccccccc}
+        {\scriptsize $1$} & {\scriptsize $2$} & {\scriptsize $3$} & {\scriptsize $4$} & {\scriptsize $5$} & {\scriptsize $6$}& {\scriptsize $7$}\\
+        $Z$ & $I$ & $Z$ & $I$ & $Z$ & $I$ & $Z$ \\
+        $I$ & $Z$ & $Z$ & $I$ & $I$ & $Z$ & $Z$ \\
+        $I$ & $I$ & $I$ & $Z$ & $Z$ & $Z$ & $Z$ \\
+        $X$ & $I$ & $X$ & $I$ & $X$ & $I$ & $X$ \\
+        $I$ & $X$ & $X$ & $I$ & $I$ & $X$ & $X$ \\
+        $I$ & $I$ & $I$ & $X$ & $X$ & $X$ & $X$ \\      
+    \end{tabular}}
+    \caption{The stabilizers of the 7-Qubit Steane code.}\label{table:steane-stabilizers}
+\end{table}
+
+\noindent
+Unfortunately, as it turns out, there doesn't exist a transversal logical $T$ gate for the Steane code. We depict its non-transversal implementation in Figure~\ref{fig:steane-logical-gates}b. Even worse, the Eastin\hyph{}Knill\hyph{}Theorem states that no gate set exists that is both universal and transversal for a quantum code detecting one-qubit errors~\cite{eastin_restrictions_2009}. Thus, we can not simply find another non-Clifford gate and implement this gate transversally. Consequently, if we want to keep using the Steane code, we need to find alternative techniques to implement the $T$ gate fault tolerantly for universal quantum computing. The next two sections explore two of these techniques, namely, code-switching and magic state distillation.

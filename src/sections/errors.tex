@@ -1,0 +1,44 @@
+\section{Pauli matrices \& the Pauli group}\label{sec:errors}
+
+Equations~\ref{eq:pauli-matrix-I}-\ref{eq:pauli-matrix-Z} define the famous \textit{Pauli matrices}. In the quantum circuit model, the Pauli matrices are referred to as \textit{Pauli gates}.
+\begin{equation}\label{eq:pauli-matrix-I}
+    \begin{aligned}
+        I = \begin{pmatrix}
+            1 & 0 \\
+            0 & 1 \\
+        \end{pmatrix} & & \text{``identity''}
+    \end{aligned}
+\end{equation}
+\begin{equation}\label{eq:pauli-matrix-X}
+    \begin{aligned}
+        X = \begin{pmatrix}
+            0 & 1 \\
+            1 & 0 \\
+        \end{pmatrix} & & \text{``bit flip''}
+    \end{aligned}
+\end{equation}
+\begin{equation}\label{eq:pauli-matrix-Y}
+    \begin{aligned}
+        Y = iXZ = \begin{pmatrix}
+            0 & -i \\
+            i & 0 \\
+        \end{pmatrix} & & \text{``bit \& phase flip''}
+    \end{aligned}
+\end{equation}
+\begin{equation}\label{eq:pauli-matrix-Z}
+    \begin{aligned}
+        Z = \begin{pmatrix}
+            1 & 0 \\
+            0 & -1 \\
+        \end{pmatrix} & & \text{``phase flip''}
+    \end{aligned}
+\end{equation}
+A useful fact that will be of significance later is that $X$, $Y$, and $Z$ anti-commute. That is, ${XZ = -ZX}$, written as $\{X, Z\} = 0$, and similarly for any other pair.
+
+The Pauli matrices generate the \textit{Pauli group} $\mathcal{P}_{n}$. Mathematically, it is the $n$-fold tensor product of the four Pauli matrices with factors $\pm{}1$, and $\pm{}i$. The factors are necessary to build a valid group. Any two elements of the Pauli group either commute or anti-commute, where one defines commutation as $AB = BA$ and denotes it as ${[A, B] = 0}$. 
+
+These matrices are important because they span the space of all $2 \times 2$ matrices. Likewise, the Pauli group spans the space of $2^{n}\times 2^{n}$ matrices. Thus, any error $E$ can be expanded as a linear combination of these matrices.
+\begin{equation}
+    E = aI + bX + cY + dZ
+\end{equation}
+Now, assume a single-qubit error occurs on the first qubit of many. The resulting state $E_{1}\ket{\psi}$ is also a linear combination of the terms $I_{1}\ket{\psi}$, $X_{1}\ket{\psi}$, $Y_{1}\ket{\psi}$, and $Z_{1}\ket{\psi}$. Then, after a measurement, the state would collapse to one of these terms. If we knew with which term we ended up, we could correct the error by applying the respective Pauli gate. In the next section, we introduce a formalism that underlies most of today's quantum codes and enables such a detection mechanism.

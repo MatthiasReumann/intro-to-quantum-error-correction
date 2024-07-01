@@ -1,0 +1,19 @@
+\section{Physical \& Logical Qubits}
+
+By the rules of quantum mechanics, we can't utilize redundancy in the form of repetition codes to protect qubits. However, there are also phenomenons with no classical equivalent such as entanglement. In 1995, Shor was one of the first to take advantage of this quantum effect for quantum error correction.
+\input{schematics/shor}
+
+\noindent
+The Shor code stores the information of a single \textit{logical} qubit in the entanglement between nine \textit{physical} ones~\cite{shor_scheme_1995}. Consequently, no specific (possibly faulty) qubit stores all the state's information. Figure~\ref{fig:physical_to_logical_qubit} depicts this procedure schematically. The underlying idea is borrowed from classical codes: Use many to protect the few. But entangle qubits instead of cloning.
+
+Equations~\ref{eq:shor-logical-0}-\ref{eq:shor-logical-1} define the Shor code and its logical qubits mathematically. Notice that the qubit triplet in the brackets is the Greenberger-Horne-Zeilinger (GHZ) state, a maximally entangled state. 
+\begin{equation}\label{eq:shor-logical-0}
+    \ket{0_L} = \left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right)^{\otimes{}3}
+\end{equation}
+\begin{equation}\label{eq:shor-logical-1}
+    \ket{1_L} = \left(\frac{\ket{000}-\ket{111}}{\sqrt{2}}\right)^{\otimes{}3}
+\end{equation}
+\begin{equation}\label{eq:the-shor-code}
+    \mathcal{Q}_{shor} = \{\ket{0_L}, \ket{1_L}\}
+\end{equation}
+It should be no surprise that the encoding circuit for the Shor code stacks three GHZ circuits. We refer the reader to Ref.~\cite{nguyen_demonstration_2021}, which implements the Shor code on a trapped-ion device, to validate this fact.

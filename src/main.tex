@@ -1,0 +1,68 @@
+\documentclass[a4paper,twocolumn,11pt]{quantumarticle}
+\pdfoutput=1
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{plainnat}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{array, multirow, bigdelim, makecell, booktabs}
+\usepackage{qcircuit}
+\usepackage{blochsphere}
+\usepackage{stackengine}
+\usepackage{amssymb}
+\usepackage{epigraph}
+\usepackage{float}
+
+\usetikzlibrary{arrows, shapes, shapes.multipart, trees, positioning,
+    backgrounds, fit, matrix, external, 
+    positioning, arrows, calc, math, angles, quotes, babel, arrows.meta}
+
+\definecolor{rbeige}{HTML}{F7EFE5}
+\definecolor{rblue1}{HTML}{D0BFFF}
+\definecolor{rblue2}{HTML}{C3ACD0}
+\definecolor{rblue3}{HTML}{7743DB}
+\definecolor{rred}{HTML}{FA7070}
+\definecolor{rgreen}{HTML}{A5DD9B}
+\definecolor{rpink}{HTML}{FA4EAB}
+\definecolor{rgray}{HTML}{DDDDDD}
+
+\def\hyph{-\penalty0\hskip0pt\relax}
+
+\begin{document}
+
+\title{{An Incomplete Introduction to Quantum Error Correction}}
+\author{Matthias Reumann}
+\affiliation{Technische Universität München, Munich, Germany}
+\email{matthias.reumann@tum.de}
+\maketitle
+
+\begin{abstract}
+    Quantum Error Correction is an essential building block towards {Fault-Tolerant} Quantum Computing. This paper introduces the theoretical minimum required for the former and briefly introduces the latter. We do so in a beginner-friendly and graphically-supplemented fashion.
+\end{abstract}
+
+\input{sections/introduction.tex}
+\input{sections/challenges.tex}
+\input{sections/logicalqubits.tex}
+\input{sections/errors.tex}
+\input{sections/stabilizers.tex}
+\input{sections/universal.tex}
+\input{sections/steane.tex}
+\input{sections/code-switching.tex}
+\input{sections/magic.tex}
+\input{sections/conclusion.tex}
+
+\bibliography{references}
+
+\end{document}

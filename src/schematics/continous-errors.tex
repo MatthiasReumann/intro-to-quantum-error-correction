@@ -1,0 +1,36 @@
+\begin{figure}[h]
+    \centering
+    \begin{blochsphere}[radius=2cm,opacity=0,rotation=-105]
+        \coordinate (origin) at (0,0);
+
+        \drawLongitudeCircle[]{-105};
+        \drawLatitudeCircle[style={opacity=0.4, dashed, thin}]{0};
+        
+        \labelLatLon{ket0}{90}{0};
+        \labelLatLon{ket1}{-90}{0};
+        \labelLatLon{ketminus}{0}{180};
+        \labelLatLon{ketplus}{0}{0};
+
+        \labelLatLon{ketplusi}{0}{-90};
+        \labelLatLon{ketminusi}{0}{-270};
+
+        \labelLatLon{ketpluserror}{0}{-25};
+
+        \draw[opacity=0.4, dashed, thin] (ket0) -- (ket1);
+        \draw[opacity=0.4, dashed, thin] (ketplus) -- (ketminus);
+        \draw[opacity=0.4, dashed, thin] (ketplusi) -- (ketminusi);
+
+        \node[above, inner sep=.25em] at (ket0) {\footnotesize$\ket0$};
+        \node[below, inner sep=.25em] at (ket1) {\footnotesize$\ket1$};
+        
+        { 
+            \setDrawingPlane{0}{0}
+            \pic["\footnotesize $\frac{\pi}{2}$", current plane, draw, fill=rblue2!50, fill opacity=.5, text opacity=1, angle radius=2.2em, angle eccentricity=1.3,-Straight Barb]{angle=ketminus--origin--ketplus};
+            \pic["\footnotesize $\delta$", current plane, draw, fill=rred!50, fill opacity=.5, text opacity=1, angle radius=2.2em,angle eccentricity=1.75]{angle=ketplus--origin--ketpluserror};
+            
+        }
+        
+        \draw[color=black, -latex] (origin) -- (ketpluserror);
+    \end{blochsphere}
+    \caption{Over-rotation by $\delta$ for a desired $\frac{\pi}{2}$ rotation on the bloch sphere.}\label{fig:continous-errors}
+\end{figure}

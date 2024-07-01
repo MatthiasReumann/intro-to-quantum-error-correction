@@ -1,0 +1,15 @@
+\section{Code Switching}\label{sec:code-switching}
+
+\input{schematics/code-switching.tex}
+
+For the Steane code the implementation of the logical $T$ gate is not transversal. However, notice that the circuit in Figure~\ref{fig:steane-logical-gates}b only requires $CNOT$ and $T$ gates. What if we had a second quantum code $C_{2}$ that permits a transversal implementation of these gates? Then, if we use seven logical qubits of $C_{2}$ instead of seven physical qubits, the resulting circuit is transversal as well. This idea, proposed by {Jochym-O'Connor} and Laflamme, uses the $[[15,1,3]]$ {Reed-Muller} quantum code as $C_{2}$~\cite{jochym-oconnor_using_2014}. The technique of producing larger codes from two smaller ones is called \textit{concatenation}. We depict it visually in Figure~\ref{fig:code-switching}a.
+
+\smallskip
+\noindent
+Previously, single-qubit errors propagate between physical qubits potentially leading to a logical error. Now, single-qubit errors propagate between logical qubits causing a detectable and correctable single-qubit error on each of the logical qubits of the Reed-Muller quantum code (Figure~\ref{fig:code-switching}b). Consequently, the construction above yields a transversal, i.e. fault-tolerant, implementation of the $T_{L}$ gate. 
+
+Reversely, we implement the transversal Clifford gates of the Steane code with possibly non-transversal gates of the {Reed-Muller} quantum code. As a consequence of non-transversality, a single-qubit error can propagate to multiple qubits on a given {Reed-Muller} code block and therefore can cause a logical fault. However, from the perspective of the Steane code, only a single-qubit error occurs and is therefore detectable and correctable (Figure~\ref{fig:code-switching}c).
+
+\smallskip
+\noindent
+The final property we require is that the implementation of the six stabilizers of the Steane code is globally transversal. Otherwise, errors occurring during error correction can propagate and destroy further logical computation. Fortunately, the Reed-Muller code allows for transversal $X_L$ and $Z_L$ gates. We conclude that universal quantum computing is achievable using clever concatenation schemes. The obvious downside is that one logical qubit requires $7\cdot{}15$ physical ones for the correction of a single-qubit error.

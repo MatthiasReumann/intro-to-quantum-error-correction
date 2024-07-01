@@ -1,0 +1,31 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=.9]
+    
+    \filldraw [color=black, fill=white, thin] (0,0) circle (0.07);
+
+    \draw[thin, ->] (0.4,0) -- (2.1,0) node[midway, above] {\small $C_{Shor}$};    
+
+    \filldraw [color=black, fill=rblue2, thin] (3,0) circle (0.7);
+
+    \filldraw [color=black, fill=white, thin] (3,0) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (3,0.42) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (3.21,0.21) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (3.42,0) circle (0.07);
+    
+    \filldraw [color=black, fill=white, thin] (2.79,0.21) circle (0.07);
+
+    \filldraw [color=black, fill=white, thin] (2.79,-0.21) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (2.58, 0) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (3, -0.42) circle (0.07);
+    \filldraw [color=black, fill=white, thin] (3.21,-0.21) circle (0.07);
+
+    
+    \node at (0,-1.1) {\small $\ket{\psi}\in\mathbb{C}^{2}$};
+    \node at (3, -1.1) {\small $\ket{\psi{}_L}\in(\mathbb{C}^{2})^{\otimes{}9}$};
+    
+    
+    
+    \end{tikzpicture}
+    \caption{Encoding of one physical qubit $\ket{\psi}$ into one logical qubit $\ket{\psi_L}$. The logical qubit entangles multiple physical qubits.}\label{fig:physical_to_logical_qubit}
+\end{figure}

@@ -1,0 +1,66 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        
+        \draw[color=black, fill=rblue2, thin] (0,0) rectangle (0.7,1) node[midway] {0};
+        \draw[color=black, thin] (0.7,0) rectangle (1.4,1) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin] (1.4,0) rectangle (2.1,1) node[midway] {1};
+        \draw[color=black, thin] (2.1,0) rectangle (2.8,1) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin] (2.8,0) rectangle (3.5,1) node[midway] {0};
+        \draw[color=black, thin] (3.5,0) rectangle (4.2,1) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin] (4.2,0) rectangle (4.9,1) node[midway] {0};
+
+        \node at (-0.5, 0.5) {$r_1:$};
+        \node at (5.75, 0.5) {$1$ (\textcolor{rblue3}{$\bullet$})};
+
+        \draw[color=black, thin] (0,-1.5) rectangle (0.7,-0.5) node[midway] {0};
+        \draw[color=black, fill=rblue2, thin] (0.7,-1.5) rectangle (1.4,-0.5) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin] (1.4,-1.5) rectangle (2.1,-0.5) node[midway] {1};
+        \draw[color=black, thin] (2.1,-1.5) rectangle (2.8,-0.5) node[midway] {1};
+        \draw[color=black, thin] (2.8,-1.5) rectangle (3.5,-0.5) node[midway] {0};
+        \draw[color=black, fill=rblue2, thin] (3.5,-1.5) rectangle (4.2,-0.5) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin] (4.2,-1.5) rectangle (4.9,-0.5) node[midway] {0};
+
+        \node at (-0.5, -1) {$r_2:$};
+        \node at (5.75, -1) {$1$ (\textcolor{rblue3}{$\bullet$})};
+
+        
+        \draw[color=black, thin]                (0,-3) rectangle (0.7,-2) node[midway] {0};
+        \draw[color=black, thin]                (0.7,-3) rectangle (1.4,-2) node[midway] {1};
+        \draw[color=black, thin]                (1.4,-3) rectangle (2.1,-2) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin]   (2.1,-3) rectangle (2.8,-2) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin]   (2.8,-3) rectangle (3.5,-2) node[midway] {0};
+        \draw[color=black, fill=rblue2, thin]   (3.5,-3) rectangle (4.2,-2) node[midway] {1};
+        \draw[color=black, fill=rblue2, thin]   (4.2,-3) rectangle (4.9,-2) node[midway] {0};
+
+        \node at (-0.5, -2.5) {$r_3:$};
+        \node at (5.75, -2.5) {$0$ ($\circ$)};
+
+        
+        \draw[color=black, densely dashed, thin, rounded corners=4pt] (1.2,1.2) rectangle (2.3,-1.7);
+        \draw[color=black, densely dashed, thin, rounded corners=4pt] (4, 1.2) rectangle (5.1,-1.7);
+        \draw[color=black, densely dashed, thin, rounded corners=4pt] (1.3,-0.4) rectangle (2.2,-3.1);
+
+        
+        
+        
+
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+
+        
+        
+
+        
+    \end{tikzpicture}
+
+    \caption{Application of the parity check matrix $H_{[7,4,3]}$ on $0111010$ and the resulting syndrome vector $(1\text{ }1\text{ }0)$. The overlap of the dashed rectangles illustrates the error detection procedure.}\label{fig:hamming-rows}
+\end{figure}

@@ -1,0 +1,167 @@
+\section{The Stabilizer Formalism}\label{sec:stabilizers}
+
+The stabilizer formalism is an important tool for building modern quantum codes. Its fundamental idea resembles parity check matrices from classical coding theory. This section explores this resemblance and introduces stabilizer codes formally. Stabilizers have been pioneered by Daniel Gottesman in his Ph.D. thesis~\cite{gottesman1997stabilizer}.
+
+\subsection{Hamming Codes}\label{subsec:hamming}
+
+Hamming codes use parity-check matrices to calculate \textit{syndrome vectors}. 
+\begin{equation}
+    s = Hx\pmod{2}
+\end{equation}
+If a syndrome vector $s$ equals zero, no error occurred. Otherwise, $s$ indicates which bit has been flipped. Equation~\ref{eq:hamming-parity-matrix} shows the parity-check matrix $H$ for the $[7,4,3]$ code.
+\begin{equation}
+    H = 
+    \begin{pmatrix}
+        r_1 \\
+        r_2 \\
+        r_3 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0 & 1 & 0 & 1 & 0 & 1 \\ 
+        0 & 1 & 1 & 0 & 0 & 1 & 1 \\ 
+        0 & 0 & 0 & 1 & 1 & 1 & 1 \\ 
+    \end{pmatrix}
+    \label{eq:hamming-parity-matrix}
+\end{equation}
+Figure~\ref{fig:hamming-rows} illustrates the {dot-product} between each row of $H$ and $x = 0111010$. Note that each dot-product $r_{i\in\{1,2,3\}}x\pmod{2}$ yields one bit of the syndrome vector and splits the codeword into a violet ($\textcolor{rblue3}\bullet{}$) and white ($\circ{}$) group. The resulting syndrome vector is $s=(1\text{ }1\text{ }0)$, or intuitively $(\textcolor{rblue3}\bullet{}$\text{ }$\textcolor{rblue3}\bullet{}$\text{ }$\circ{})$. Consequently, $s$ tells us the error is in the third bit. The corrected codeword is $\hat{x} = 0101010$.
+\input{schematics/hamming.tex}
+
+\subsection{Stabilizer Codes}
+
+A matrix $M\in\mathcal{P}_n$ stabilizes the state $\ket{\psi}$ if $M\ket{\psi} = +1\ket{\psi}$. In other words, $\ket{\psi}$ is an eigenvector of $M$ with eigenvalue $+1$. The states stabilized by a set $S$ of commuting matrices $M_{i}$ define the codewords of a quantum code $\mathcal{Q}$, where $-I \notin S$.
+\begin{equation}\label{eq:stabilizer}
+    \mathcal{Q} = \{\ket{\psi} : M_{i}\ket{\psi} = \ket{\psi}, \forall{}M_{i} \in S\}
+\end{equation}
+Remember that in Section~\ref{sec:errors} we learned that any two elements of the Pauli group either commute or anti-commute. Furthermore, we can assume that $E\in\mathcal{P}_{n}$. Hence, either Equation~\ref{eq:stabilizers-error-commute} or Equation~\ref{eq:stabilizers-error-anticommute} holds.
+\begin{equation}\label{eq:stabilizers-error-commute}
+    M_{i}(E\ket{\psi}) = EM_{i}\ket{\psi} = +1(E\ket{\psi})
+\end{equation}
+\begin{equation}\label{eq:stabilizers-error-anticommute}
+    M_{i}(E\ket{\psi}) = -EM_{i}\ket{\psi} = -1(E\ket{\psi})
+\end{equation}
+Using this fact, we define the syndrome $s = (s_{1},s_{2},\ldots, s_{|S|})$ associated with an error $E$ is as follows.
+\begin{equation}
+    s_{i} = \begin{cases}
+            0 & \text{ if }[E, M_{i}] = 0\\ 
+            1 & \text{ if }\{E, M_{i}\} = 0\end{cases}
+\end{equation}
+This tells us that we can detect any error $E$ if we measure a set of carefully chosen stabilizers $M_{i}$.
+
+\smallskip 
+
+\noindent
+Let's return to the Shor code. Namely, its stabilizers as defined in Table~\ref{table:shor-stabilizers}. For brevity, we have omitted the Kronecker product between the Pauli matrices. The \textit{weight} of a stabilizer is the amount of non-trivially acting Pauli matrices, e.g. $wt(M_7) = 6$. Furthermore, using Equation~\ref{eq:stabilizer} we can alternatively define the logical states of the Shor code in terms of these stabilizers. That is, $\{\ket{\psi} : M_{i}\ket{\psi} = \ket{\psi}\} = \mathcal{Q}_{shor}$.
+
+\begin{table}[h]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{cccccccccc}
+        & {\scriptsize $1$} & {\scriptsize $2$} & {\scriptsize $3$} & {\scriptsize $4$} & {\scriptsize $5$} & {\scriptsize $6$}& {\scriptsize $7$} & {\scriptsize $8$}& {\scriptsize $9$}\\
+        $M_1 = $ & $Z$ & $Z$ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ \\
+        $M_2 = $ & $I$ & $Z$ & $Z$ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ \\
+        $M_3 = $ & $I$ & $I$ & $I$ & $Z$ & $Z$ & $I$ & $I$ & $I$ & $I$ \\
+        $M_4 = $ & $I$ & $I$ & $I$ & $I$ & $Z$ & $Z$ & $I$ & $I$ & $I$ \\
+        $M_5 = $ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ & $Z$ & $Z$ & $I$ \\
+        $M_6 = $ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ & $I$ & $Z$ & $Z$ \\
+        $M_7 = $ & $X$ & $X$ & $X$ & $X$ & $X$ & $X$ & $I$ & $I$ & $I$ \\
+        $M_8 = $ & $I$ & $I$ & $I$ & $X$ & $X$ & $X$ & $X$ & $X$ & $X$ \\
+    \end{tabular}
+    }
+    \caption{The eight stabilizers for the Shor code. Kronecker products between Pauli matrices omitted for brevity.}\label{table:shor-stabilizers}
+\end{table}
+
+\noindent
+Each measurement of a stabilizer yields one syndrome bit. Combining the information of all measurements tells us not only if an error happened but also which one and where. Let us walk through a simple example to see this procedure in action. Let $\ket{x}$ be the $\ket{0_L}$ codeword, where we bit-flip the third qubit:
+\begin{equation}
+    \left(\frac{\ket{00\textcolor{purple}{1}}+\ket{11\textcolor{purple}{0}}}{\sqrt{2}}\right)\otimes\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right)^{\otimes{}2}
+\end{equation}
+The measurement of all stabilizers $M_1$ to $M_8$ yields syndrome vector
+\begin{equation}
+    s=(0\text{ }1\text{ }0\text{ }0\text{ }0\text{ }0\text{ }0\text{ }0)
+\end{equation}
+or alternatively {color-coded} $(\circ{}\text{ }\textcolor{rblue3}\bullet{}\text{ }\circ{}\text{ }\circ{}\text{ }\circ{}\text{ }\circ{}\text{ }\circ{}\text{ }\circ{})$. A few observations follow. First of all, because it is not the zero vector some error occurred. Secondly, $M_2$ is the only stabilizer acting non-trivially on $\ket{x}$ which results in a syndrome bit of $1$. Lastly, as with classical parity checks combining the information of all syndrome bits tells us that an $X$ error occurred on the third qubit. Thus, applying a $X$ gate on the third qubit corrects the error. Figure~\ref{fig:synd-msmt} depicts this procedure graphically. A comparison to Figure~\ref{fig:hamming-rows} might be illuminating. We leave it up to the reader to validate this procedure for $Y$ and $Z$ errors.
+
+\input{schematics/shor_syndrome.tex}
+
+\subsection{Degenerate Codes}
+
+A quantum code is \textit{degenerate} if two distinct errors $E$ and $F$ have the same syndrome vector. Otherwise, we call it \textit{non-degenerate}. 
+
+\smallskip
+
+\noindent
+A stabilizer code is degenerate if $E^{\dagger}F \in S$. Intuitively, this means that $E$ and $F$ produce the same error on the same codeword.
+\begin{equation}
+    \begin{aligned}
+        \ket{err} &= F\ket{\psi_{L}} = E\ket{\psi_{L}}\\
+        &= E^{\dagger}F\ket{\psi_{L}} = E^{\dagger}E\ket{\psi_{L}} \\
+        &= (E^{\dagger}F)\ket{\psi_{L}} = \ket{\psi_{L}}
+    \end{aligned}
+\end{equation}
+For example, it is easy to see that a $Z_{1}$, $Z_{2}$, and $Z_{3}$ error leads to the same erroneous state for the Shor code. Moreover, $Z_{1}Z_{2}$, $Z_{2}Z_{3}$, and $Z_{1}Z_{3}$ are indeed stabilizers. Hence, the Shor code is degenerate. Interestingly, applying $Z_1$ (or $Z_2$ or $Z_3$) corrects each of these errors. This leads to the conclusion that degenerate codes can correct more errors than they can uniquely identify. Remarkably, this property is unknown to classical codes.
+
+\subsection{Syndrome Measurements}
+
+Each measurement of a stabilizer $M_{i}$ tells us one bit of the error syndrome. But how exactly can we measure stabilizers non-destructively?
+
+\smallskip
+\noindent
+The idea is the following. First, encode the error syndrome on additional qubits, called \textit{ancilla qubits} without disturbing the actual \textit{data qubits}. Then, measure the ancilla qubits and evaluate the error syndrome.
+\begin{figure}[H]
+    \[
+        \Qcircuit @C=1.5em @R=0.7em {
+            \lstick{\ket0}      & \gate{H}  & \ctrl{1}         & \gate{H}   & \meter   & \rstick{s_i}\cw \\ 
+            \lstick{}           &  \qw      & \multigate{2}{M_{i}}              & \qw        & \qw & \qw\inputgroupv{2}{4}{1em}{1.75em}{\ket{\psi}} \\
+                                &  \qw      & \ghost{P}                     & \qw        & \qw & \qw \\ 
+                                &  \qw      & \ghost{P}                     & \qw        & \qw & \qw \\
+        }
+    \]
+    \caption{The phase-kickback circuit.}\label{fig:phase-kickback}
+\end{figure}
+\noindent
+The most straightforward way of achieving this is using a \textit{phase kickback} construction. We depict its circuit in Figure~\ref{fig:phase-kickback}. The {controlled-$M_i$} gate can be constructed from multiple {controlled-$P_{i}$} gates, where $P_{i}$ is a Pauli gate acting on the $i$th qubit. Notice that the state after the controlled operation is
+\begin{equation}
+    \frac{\ket{0}\ket{\psi} + \ket{1}M_{i}\ket{\psi}}{\sqrt{2}}.
+\end{equation}
+Without an error, we can rewrite this state by using the fact that $M$ stabilizes $\ket{\psi}$.
+\begin{equation}
+    \frac{\ket{0}\ket{\psi} + \ket{1}\ket{\psi}}{\sqrt{2}} = \ket{+}\ket{\psi}
+\end{equation}
+A measurement of the ancilla qubit in the Hadamard basis reveals that the error syndrome bit for this stabilizer is $0$. Similarly, for an erroneous state and an appropriate stabilizer, the same measurement gives us a syndrome bit of $1$.
+\begin{equation}
+    \frac{\ket{0}(E\ket{\psi}) - \ket{1}(E\ket{\psi})}{\sqrt{2}} = \ket{-}(E\ket{\psi})
+\end{equation}
+Unfortunately, this procedure isn't fault-tolerant. Any single-qubit error in the controlled-$M_i$ gate can propagate to the ancilla qubit or worse an error on the ancilla results in multiple errors on the data qubits. Needless to say but of course an error on the ancilla might also lead to an incorrect syndrome bit. 
+
+\smallskip 
+
+\noindent
+It's an open research problem to find a ``good'' solution for syndrome measurements of stabilizer codes. Error correction schemes proposed by Shor, Steane, and Knill increase the total amount of qubits by the maximum weight of a code's stabilizers. Alternatively, \textit{flag error correction} requires only $d+1$ ancilla qubits, where $d$ is the distance of a given code~\cite{Chao_2020}.
+
+\subsection{Logical Gates}
+
+At the end of the day, we want to run circuits to perform some kind of computation. However, so far we have only talked about the encoding of logical qubits and how to detect errors on the underlying physical qubits. For computation on logical qubits, we require \textit{logical gates}. A logical gate acts on a logical qubit and takes a valid codeword to another valid codeword. For example, a $X_{L}$ gate takes the $\ket{0_L}$ state to $\ket{1_L}$ exactly the same way as a $X$ gate takes $\ket{0}$ to $\ket{1}$.
+
+In the stabilizer formalism, a logical gate is a matrix $U$ that commutes with all stabilizers $M_i$. Define the set of all such $U$'s as $N(S)$ and call it the \textit{normalizer} of $S$.
+\begin{equation}
+    M_{i}(U\ket{\psi}) = UM_{i}\ket{\psi} = U\ket{\psi}\label{eq:stabilizers-logical-operators}
+\end{equation}
+Thus, $U$ takes a codeword $\ket{\psi} \in \mathcal{Q}$ to another valid codeword $U\ket{\psi} \in \mathcal{Q}$. Since $U \in S$ takes any codeword to itself, we define the set of logical gates as $N(S) \backslash S$.
+
+Going back to the Shor code, it is easily verifiable that the logical gates in Equations~\ref{eq:shor-logical-x}-\ref{eq:shor-logical-z} act like their physical counterparts.
+\begin{equation}\label{eq:shor-logical-x}
+    X_L = \bigotimes_{i=1}^{9}Z_{i}
+\end{equation}
+\begin{equation}\label{eq:shor-logical-z}
+    Z_L = \bigotimes_{i=1}^{9}X_{i}
+\end{equation}
+Moreover, Equation~\ref{eq:stabilizers-logical-operators} also tells us that these logical gates are not unique since we can always apply stabilizers $M_i$ to $X_L$ or $Z_L$.
+\begin{equation}
+    \begin{aligned}
+        (Z_{1}Z_{4}Z_{7})\ket{\psi} &= (M_{2}M_{4}M_{6}X_{L})\ket{\psi} \\
+        &= X_{L}M_{2}M_{4}M_{6}\ket{\psi} \\
+        &= X_{L}\ket{\psi}
+    \end{aligned}
+\end{equation}
+Consequently, $Z_{1}Z_{4}Z_{7}$ is an alternative representation of the $X_L$ gate defined in Equation~\ref{eq:shor-logical-x} that uses three instead of nine physical $Z$ gates. This begs the question if there is an ``implementation'' with less than three physical gates. As it turns out, this isn't possible. For Shor's code, three is the smallest number of physical gates required to take one codeword to another. We call this smallest number the \textit{distance} of a code. This brings us finally to the classification of Shor's code. Namely, it is a $[[9,1,3]]$ quantum code, encoding $9$ physical qubits into $1$ logical qubit with a distance of $3$.
